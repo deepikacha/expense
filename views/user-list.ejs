@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+</head>
+<body>
+    <h1>User List</h1>
+    <% if (users.length > 0) { %>
+        <ul>
+            <% users.forEach(user => { %>
+                <li>
+                    <strong>amount:</strong> <%= user.amount %>,
+                    <strong>description:</strong> <%= user.description %>,
+                    <strong>category:</strong> <%= user.category %>,
+                  
+
+                    <form action="/delete-user" method="POST" style="display:inline;">
+                        <input type="hidden" name="userId" value="<%= user.id %>">
+                        <button type="submit">Delete</button>
+                    </form>
+                    
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No users found.</p>
+    <% } %>
+</body>
+</html>
